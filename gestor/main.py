@@ -62,12 +62,15 @@ class ModeloCrearCliente(ModeloCliente):
 
 
 
+#estos dos métodos no me funcionan
+
+
 @app.post("/clientes/crear/")
 async def clientes_crear(datos: ModeloCrearCliente):
     cliente = db.Clientes.crear(datos.dni, datos.nombre, datos.apellido)
     if cliente:
-        #headers = {"content-type": "charset=utf-8"}
-        #JSONResponse(content=content.to_dict(), headers=headers)
+        headers = {"content-type": "charset=utf-8"}
+        JSONResponse(content=content.to_dict(), headers=headers)
         return cliente
     raise HTTPException(status_code=404)
 
@@ -83,7 +86,7 @@ async def clientes_borrar(dni: str):
         return content
     raise HTTPException(status_code=404)
 
-print("Servidor de la API...")
+# print("Servidor de la API...")
 
 if __name__ == "__main__":
     uvicorn.run(app,host= '0.0.0.0', port=8000)

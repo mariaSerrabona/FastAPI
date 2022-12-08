@@ -27,3 +27,9 @@ python run.py -t
 ```bash
 pytest -v
 ```
+
+##Para poder ejecutar el código:
+cd gestor
+source myenv/bin/activate
+uvicorn main:app --reload
+
